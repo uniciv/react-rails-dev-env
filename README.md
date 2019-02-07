@@ -14,44 +14,38 @@ Antes de executar a configuração do ambiente, você deve seguir os passos abai
 # 2 - Clone esse repositorio no seu computador:
 
 In order to setup the development virtual machine, you'll need to clone this repository in your local machine by running the command:
+Para configurar o ambiente de desenvolvimento virtual, você precisará clonar esse repositório em seu computador local, executando o seguinte comando no terminal:
 
 ```console
 $ git clone https://github.com/uniciv/react-rails-dev-env
 ```
 
-# 3 - Run the setup script:
+# 3 - Execute o script de configuração:
 
-After cloning the repository, you need to navigate inside the folder where the repository has been cloned and run the setup with the following command:
+Após clonar o repositório, você precisará navegar para a pasta onde o repositório foi clonado, onde está localizado o arquivo **Vagrantfile** e executar o seguinte comando no terminal:
 
 ```console
 $ vagrant up --provision
 ```
 
-# 4 - Finishing setup and logging in:
-After the downloading process of the box and setting up (something about 30 minutes depending on your Internet connection) you can SSH into the machine with the command:
+NOTA: Esse processo pode levar até uma hora dependendo da velocidade da sua Internet. Porém esse processo é executado apenas uma vez por computador;
+
+# 4 - Finalizando a configuração e fazendo login:
+Após o download e configuração da máquina, você precisará entrar na máquina virtual via protocolo **SSH** . O openSSH já deve estar instalado no seu computador quando você fez o download do Vagrant. Sendo assim, basta executar o comando abaixo. OBS: Não é necessário senha para fazer login, visto que , durante o processo de provisionamento da máquina virtual, uma chave publica é disponibilizada para fazer login automaticamente.
 
 ```console
 $ vagrant ssh
 ```
+## Para Usuários Windows APENAS!!!!
+Caso o comando acima não funcione, basta fazero download do OpenSSH de acordo com a arquitetura do seu computador. Clique [AQUI](https://github.com/PowerShell/Win32-OpenSSH/releases) para fazer download do OpenSSH.
 
-After logging in, you can navigate to the "cd /vagrant_data/code" which is your default shared folder: Everything inside /code will be present in the root directory where the Vagrantifle is. Then  you can use any text editor or IDE you like to create your Chef Cookbooks
 
-In case of inquiries, you can email me at [pfpmessias@gmail.com] or open an issue.
-
-# 5 - Generating Cookbooks
-In order to start developing your own Cookbooks, you must first scaffold a cookbook with the command:
-
-```console
-$ chef generate cookbook YOUR-COOKBOOK-NAME-GOES-HERE-WITHOUT-SINGLE-OR-DOUBLE-QUOTES
-```
-
-After running the generator, you can navigate into the folder with your cookbook name and list the content with the command below:
-
+# 5 - Navegando:
+Após fazer login, você precisa navegar para o diretoróio **/vagrant_data/code**, pois esse diretório dentro da máquina virtual está compartilhado com a raiz da pasta que você clonou no Github. Logo, qualquer arquivo que estiver na pasta da máquina virtual, você pode acessar com o seu editor de texto ou IDE, apenas abrindo a raiz da pasta que você clonou. 
 
 ```console
-$ ls -lh
+$ cd /vagrant_data/code
 ```
 
-In order to develop Chef cookbooks you must follow the [documentation in this link](https://docs.chef.io/cookbooks.html)
-
+Em caso de dúvidas, envie um email para [pfpmessias@gmail.com].
 
