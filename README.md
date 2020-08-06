@@ -5,7 +5,7 @@ Esse é um arquivo de configuração do Vagrant para automação do ambiente de 
 Antes de executar a configuração do ambiente, você deve seguir os passos abaixo, de acordo com o seu sistema operacional(Windows, OSX, Linux):
 
 
-* 1 - Baixe e instale o  [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+* 1 - Baixe e instale o  [VirtualBox](https://www.virtualbox.org/wiki/Download_Old_Builds_5_2)
 
 * 2 - Baixe e instale o  [Vagrant](https://www.vagrantup.com/downloads.html)
 
@@ -47,5 +47,5 @@ Após fazer login, você precisa navegar para o diretoróio **/vagrant_data/code
 $ cd /vagrant_data/code
 ```
 
-Em caso de dúvidas, envie um email para [pfpmessias@gmail.com].
+Em caso de dúvidas, envie um email para **pfpmessias@gmail.com**
 

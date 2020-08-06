@@ -9,57 +9,36 @@
 # Date: 16/07/2018
 # About: This script was created to automate the setup of a Fullstak Ruby on Rails development enviroment based on Ubuntu systems
 # or any other O.S where you can run the apt-get package-manager.
-# Language: Ruby <2.5.1>
-# Framework: Rails <5.1.5>
-# Database: PostgreSQL <9.5>
-# NodeJS Enviroment: <8>
+# Language: Ruby <2.7.1>
+# Framework: Rails <6.0.3.2>
+# Database: PostgreSQL <10>
+# NodeJS Enviroment: <12>
 
-echo -e "******************* Running a base enviroment update *****************\n"
-sudo apt-get update
+echo -e "********************** Installing Node.JS  **************************\n"
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt update
+sudo apt install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev wget gcc g++ libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev libffi-dev nodejs -y
 
-echo -e "********************** STARTING RUBY SETUP  **************************\n"
-sudo apt-get install curl -y
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev nodejs -y
+echo -e "********************** Installing Yarn  **************************\n"
+curl -o- -L https://yarnpkg.com/install.sh | bash
 
-echo -e "********************* Installing Ruby 2.5.0 **************************\n"
-wget http://ftp.ruby-lang.org/pub/ruby/2.5/ruby-2.5.0.tar.gz
-tar -xzvf ruby-2.5.0.tar.gz
-cd ruby-2.5.0/
-./configure --disable-install-doc
+echo -e "********************* Installing Ruby ***** **************************\n"
+cd
+wget http://ftp.ruby-lang.org/pub/ruby/2.7/ruby-2.7.1.tar.gz
+tar -xzvf ruby-2.7.1.tar.gz
+cd ruby-2.7.1/
+./configure
 make
 sudo make install
 echo -e "The actual version of Ruby now is $(ruby -v)\n"
 
-echo -e "********************* Installing Rails 5.1.5 *************************\n"
-gem install rails -v 5.1.5
-echo -e "The actual version of Ruby now is $(rails -v)\n"
+echo -e "********************* Installing Rails *************************\n"
+gem install bundler 
+gem install rails
+echo -e "The actual version of Rails now is $(rails -v)\n"
 
 echo -e "********************** Installing PostgreSQL *************************\n"
-sudo sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
-wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
-sudo apt-get install postgresql-common -y
-sudo apt-get install postgresql-9.5 libpq-dev -y
+sudo apt install postgresql postgresql-contrib
 echo -e "Adding default database user named vagrant $(sudo -u vagrant -i)"
-
-echo -e "********************* Installing Yarn ********************************\n"
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt-get update && sudo apt-get install yarn -y
-
-echo -e "************************** Installing Git ****************************\n"
-sudo apt-get install git -y
-git config --global color.ui true
-
-echo -e "******************* Installing Language Pack *********************\n"
-sudo apt-get install language-pack-pt -y
-
-echo -e "******************* Installing Gems from gemfile *********************\n"
-echo -e " Running command: $(bundle)\n"
-
-echo -e "********************** Cleaning instalation **************************\n"
-sudo apt autoremove -y
 
 echo -e "* DONE RUBY SETUP - You are ready to code! ************\n"

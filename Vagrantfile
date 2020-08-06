@@ -21,18 +21,18 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "ubuntu/xenial32"
+  config.vm.box = "ubuntu/bionic64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
-  # config.vm.box_check_update = false
+  config.vm.box_check_update = true
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # NOTE: This will enable public access to the opened port
-  config.vm.network :forwarded_port, guest: 3000, host: 3000   # rails
+  config.vm.network :forwarded_port, guest: 3000, host: 3000    # rails
   config.vm.network :forwarded_port, guest: 9292, host: 9292    # rack
   config.vm.network :forwarded_port, guest: 5432, host: 5432    # postgresql
   config.vm.network :forwarded_port, guest: 3035, host: 3035    # webpacker
@@ -60,13 +60,13 @@ Vagrant.configure("2") do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-   config.vm.provider "virtualbox" do |vb|
+  # config.vm.provider "virtualbox" do |vb|
      # Display the VirtualBox GUI when booting the machine
-     vb.gui = false
+     #vb.gui = false
   
      # Customize the amount of memory on the VM:
-     vb.memory = "1800"
-   end
+     #vb.memory = "1800"
+  # end
   #
   # View the documentation for the provider you are using for more
   # information on available options.
