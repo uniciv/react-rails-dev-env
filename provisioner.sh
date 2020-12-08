@@ -17,7 +17,7 @@
 echo -e "********************** Installing Node.JS  **************************\n"
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt update
-sudo apt install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev wget gcc g++ libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev libffi-dev nodejs -y
+sudo apt install -y libpq-dev git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev wget gcc g++ libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev libffi-dev nodejs
 
 echo -e "********************** Installing Yarn  **************************\n"
 curl -o- -L https://yarnpkg.com/install.sh | bash
